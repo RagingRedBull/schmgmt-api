@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Student implements Serializable {
+public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -24,4 +24,7 @@ public class Student implements Serializable {
     private String lastName;
     @Column(name = "birthday")
     private LocalDate birthday;
+    @ManyToOne
+    @JoinColumn(name = "section_id")
+    private Section section;
 }
