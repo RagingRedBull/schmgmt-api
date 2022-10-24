@@ -13,3 +13,6 @@ spring:
     properties:
       hibernate:
         default_schema:
+springdoc:
+  api-docs:
+    path: /api-docs

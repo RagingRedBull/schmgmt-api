@@ -14,9 +14,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class StudentService {
-
-    private final StudentRepository studentRepository;
     private final StudentMapper studentMapper;
+    private final StudentRepository studentRepository;
     public StudentDto findById(Integer id) {
         return studentMapper.toDto(studentRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Invalid ids")));

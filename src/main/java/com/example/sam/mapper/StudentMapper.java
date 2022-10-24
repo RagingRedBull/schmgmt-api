@@ -2,28 +2,15 @@ package com.example.sam.mapper;
 
 import com.example.sam.model.dto.StudentDto;
 import com.example.sam.model.entity.Student;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
 
-@Component
-public class StudentMapper implements Mapper<Student, StudentDto> {
+import java.util.Collection;
+import java.util.Set;
 
-    public StudentDto toDto(Student e) {
-        return StudentDto.builder()
-                .id(e.getId())
-                .internalId(e.getInternalId())
-                .firstName(e.getFirstName())
-                .lastName(e.getLastName())
-                .birthday(e.getBirthday())
-                .build();
-    }
-
-    public Student toEntity(StudentDto studentDto) {
-        return Student.builder()
-                .id(studentDto.getId())
-                .internalId(studentDto.getInternalId())
-                .firstName(studentDto.getFirstName())
-                .lastName(studentDto.getLastName())
-                .birthday(studentDto.getBirthday())
-                .build();
-    }
+@Mapper(componentModel = "spring")
+public interface StudentMapper {
+    Student toEntity(StudentDto dto);
+    StudentDto toDto(Student student);
+    Set<Student> toEntity(Collection<StudentDto> dtos);
+    Set<StudentDto> toDto(Collection<Student> students);
 }
